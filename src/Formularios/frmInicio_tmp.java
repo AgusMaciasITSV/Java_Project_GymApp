@@ -15,6 +15,7 @@ public class frmInicio_tmp extends javax.swing.JFrame {
      */
     public frmInicio_tmp() {
         initComponents();
+        this.setLocationRelativeTo(null); // centra la ventana
     }
 
     /**
@@ -28,36 +29,58 @@ public class frmInicio_tmp extends javax.swing.JFrame {
 
         btnCargarPlan = new javax.swing.JButton();
         btnVerPlan = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("StayFit");
 
         btnCargarPlan.setText("Cargar Plan");
+        btnCargarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarPlanActionPerformed(evt);
+            }
+        });
 
         btnVerPlan.setText("Ver Plan");
+
+        lblTitulo.setText("Login Beta nashe");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCargarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVerPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCargarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTitulo)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btnCargarPlan)
-                .addGap(52, 52, 52)
+                .addGap(39, 39, 39)
                 .addComponent(btnVerPlan)
                 .addGap(66, 66, 66))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCargarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPlanActionPerformed
+        frmCargarPlan frmCargarPlan = new frmCargarPlan(this);
+        frmCargarPlan.setVisible(true);
+        this.hide();
+    }//GEN-LAST:event_btnCargarPlanActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,5 +120,6 @@ public class frmInicio_tmp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarPlan;
     private javax.swing.JButton btnVerPlan;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
