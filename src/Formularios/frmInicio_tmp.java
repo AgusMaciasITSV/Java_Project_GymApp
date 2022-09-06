@@ -4,17 +4,18 @@
  */
 package Formularios;
 
-/**
- *
- * @author agust
- */
-public class frmInicio_tmp extends javax.swing.JFrame {
+import Clases.Plan;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
-    /**
-     * Creates new form frmInicio_tmp
-     */
+
+public class frmInicio_tmp extends javax.swing.JFrame {
+    
+    private ArrayList<Plan> listaPlanes = new ArrayList();
+    
     public frmInicio_tmp() {
         initComponents();
+        this.setLocationRelativeTo(null); // centra la ventana
     }
 
     /**
@@ -28,30 +29,51 @@ public class frmInicio_tmp extends javax.swing.JFrame {
 
         btnCargarPlan = new javax.swing.JButton();
         btnVerPlan = new javax.swing.JButton();
+        lblTitulo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("StayFit");
 
         btnCargarPlan.setText("Cargar Plan");
+        btnCargarPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCargarPlanActionPerformed(evt);
+            }
+        });
 
         btnVerPlan.setText("Ver Plan");
+        btnVerPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPlanActionPerformed(evt);
+            }
+        });
+
+        lblTitulo.setText("Login Beta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(67, 67, 67)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btnCargarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnVerPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnCargarPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnVerPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblTitulo)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(77, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(lblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(btnCargarPlan)
-                .addGap(52, 52, 52)
+                .addGap(39, 39, 39)
                 .addComponent(btnVerPlan)
                 .addGap(66, 66, 66))
         );
@@ -59,9 +81,28 @@ public class frmInicio_tmp extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnCargarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPlanActionPerformed
+        frmCrearPlan frmPlan = new frmCrearPlan(this);
+        frmPlan.setVisible(true);
+        
+        this.setVisible(false);
+    }//GEN-LAST:event_btnCargarPlanActionPerformed
+
+    private void btnVerPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPlanActionPerformed
+        this.setVisible(false);
+        
+        frmVistaPlan vistaPlan = new frmVistaPlan(this);
+        vistaPlan.setVisible(true);
+    }//GEN-LAST:event_btnVerPlanActionPerformed
+
+    public ArrayList<Plan> getListaPlanes() {
+        return this.listaPlanes;
+    }
+    
+    public void añadirPlan(Plan plan) {
+        listaPlanes.add(plan);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -97,5 +138,6 @@ public class frmInicio_tmp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCargarPlan;
     private javax.swing.JButton btnVerPlan;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
