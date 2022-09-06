@@ -89,9 +89,16 @@ public class frmInicio_tmp extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCargarPlanActionPerformed
 
     private void btnVerPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPlanActionPerformed
-        System.out.println(listaPlanes.toString());
+        this.setVisible(false);
+        
+        frmVistaPlan vistaPlan = new frmVistaPlan(this);
+        vistaPlan.setVisible(true);
     }//GEN-LAST:event_btnVerPlanActionPerformed
 
+    public ArrayList<Plan> getListaPlanes() {
+        return this.listaPlanes;
+    }
+    
     public void añadirPlan(Plan plan) {
         listaPlanes.add(plan);
     }
