@@ -69,10 +69,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Ver Plan"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVerPlanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitulo">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Login Beta nashe"/>
+        <Property name="text" type="java.lang.String" value="Login Beta"/>
       </Properties>
     </Component>
   </SubComponents>

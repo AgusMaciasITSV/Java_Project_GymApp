@@ -6,6 +6,7 @@ package Formularios;
 
 import Clases.Plan;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 
 public class frmInicio_tmp extends javax.swing.JFrame {
@@ -41,8 +42,13 @@ public class frmInicio_tmp extends javax.swing.JFrame {
         });
 
         btnVerPlan.setText("Ver Plan");
+        btnVerPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVerPlanActionPerformed(evt);
+            }
+        });
 
-        lblTitulo.setText("Login Beta nashe");
+        lblTitulo.setText("Login Beta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -76,14 +82,20 @@ public class frmInicio_tmp extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCargarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCargarPlanActionPerformed
-        frmCargarPlan frmCargarPlan = new frmCargarPlan(this);
-        frmCargarPlan.setVisible(true);
-        this.hide();
+        frmCrearPlan frmPlan = new frmCrearPlan(this);
+        frmPlan.setVisible(true);
+        
+        this.setVisible(false);
     }//GEN-LAST:event_btnCargarPlanActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    private void btnVerPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVerPlanActionPerformed
+        System.out.println(listaPlanes.toString());
+    }//GEN-LAST:event_btnVerPlanActionPerformed
+
+    public void añadirPlan(Plan plan) {
+        listaPlanes.add(plan);
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

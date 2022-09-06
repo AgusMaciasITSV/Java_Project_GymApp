@@ -1,15 +1,24 @@
 package Formularios;
 
+import Clases.Dia;
 import Clases.Plan;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 
 public class frmCrearPlan extends javax.swing.JFrame {
     
     private frmInicio_tmp parent;
-    private Plan plan;
+    private ArrayList<Dia> listaDias = new ArrayList();
+    
+    private DefaultListModel DmList = new DefaultListModel();
     
     public frmCrearPlan(frmInicio_tmp frmInicio) {
         initComponents();
+        this.setLocationRelativeTo(null);
+        
         parent = frmInicio;
+        ltDias.setModel(DmList);
     }
 
     @SuppressWarnings("unchecked")
@@ -20,7 +29,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
         btnAñadirDia = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ltDias = new javax.swing.JList<>();
-        jButton2 = new javax.swing.JButton();
+        btnCrearPlan = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -37,13 +46,18 @@ public class frmCrearPlan extends javax.swing.JFrame {
         });
 
         ltDias.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "1", "2", "3", "4", "5", "6", "7" };
+            String[] strings = { "hola" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane1.setViewportView(ltDias);
 
-        jButton2.setText("Crear Plan");
+        btnCrearPlan.setText("Crear Plan");
+        btnCrearPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearPlanActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +83,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
                             .addComponent(lblTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(btnCrearPlan)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
@@ -89,7 +103,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(jButton2))
+                    .addComponent(btnCrearPlan))
                 .addContainerGap())
         );
 
@@ -98,50 +112,38 @@ public class frmCrearPlan extends javax.swing.JFrame {
 
     private void btnAñadirDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirDiaActionPerformed
         this.setVisible(false);
-        
+        frmCrearDia frmDia = new frmCrearDia(this);
+        frmDia.setVisible(true);
     }//GEN-LAST:event_btnAñadirDiaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        parent.show();
+        parent.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCrearPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCrearPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCrearPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCrearPlan.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnCrearPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearPlanActionPerformed
+        if(listaDias.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Para crear un plan tiene que añadir dias");
+            return;
         }
-        //</editor-fold>
+        
+        parent.añadirPlan(new Plan(listaDias));
+        JOptionPane.showMessageDialog(null, "Se añadio el plan exitosamente");
+        
+        parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCrearPlanActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmCrearPlan().setVisible(true);
-            }
-        });
+    public void añadirDia(Dia dia) {
+        listaDias.add(dia);
+        DmList.addElement("dia " + listaDias.size());
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAñadirDia;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton btnCrearPlan;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JList<String> ltDias;

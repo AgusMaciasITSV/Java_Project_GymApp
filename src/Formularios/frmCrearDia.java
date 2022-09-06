@@ -1,6 +1,7 @@
 package Formularios;
 
 import Clases.Ejercicio;
+import Clases.Dia;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
@@ -14,9 +15,13 @@ public class frmCrearDia extends javax.swing.JFrame {
     private ArrayList<Ejercicio> listaEjercicio = new ArrayList();
     private DefaultListModel dmList = new DefaultListModel();
     
-    public frmCrearDia() {
+    frmCrearPlan parent;
+    
+    public frmCrearDia(frmCrearPlan parent) {
         initComponents();
+        this.setLocationRelativeTo(null);
         
+        this.parent = parent;
         ltEjercicio.setModel(dmList);
     }
 
@@ -52,14 +57,26 @@ public class frmCrearDia extends javax.swing.JFrame {
         lblSubTitulo.setText("Crear Ejercicio");
 
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtNombreKeyPressed(evt);
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNombreKeyTyped(evt);
             }
         });
 
         lblSeries.setText("Series");
 
+        txtSeries.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSeriesKeyTyped(evt);
+            }
+        });
+
         lblRepeticiones.setText("Repeticiones");
+
+        txtRepeticiones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRepeticionesKeyTyped(evt);
+            }
+        });
 
         btnAñadirEjercicio.setText("Añadir Ejercicio");
         btnAñadirEjercicio.addActionListener(new java.awt.event.ActionListener() {
@@ -69,8 +86,18 @@ public class frmCrearDia extends javax.swing.JFrame {
         });
 
         btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnCrearDia.setText("Crear Dia");
+        btnCrearDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCrearDiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,9 +189,34 @@ public class frmCrearDia extends javax.swing.JFrame {
         dmList.addElement(nombreEjercicio + ": " + series + " x " + repeticiones);
     }//GEN-LAST:event_btnAñadirEjercicioActionPerformed
 
-    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
-        if
-    }//GEN-LAST:event_txtNombreKeyPressed
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnCrearDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearDiaActionPerformed
+        parent.añadirDia(new Dia(listaEjercicio));
+        JOptionPane.showMessageDialog(null, "Se agrego el dia correctamente");
+        
+        parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnCrearDiaActionPerformed
+
+    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+        char ch = evt.getKeyChar();
+        if( (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z') ) evt.consume();
+        
+    }//GEN-LAST:event_txtNombreKeyTyped
+
+    private void txtSeriesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSeriesKeyTyped
+        char ch = evt.getKeyChar();
+        if(ch < '0' || ch > '9') evt.consume();
+    }//GEN-LAST:event_txtSeriesKeyTyped
+
+    private void txtRepeticionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRepeticionesKeyTyped
+        char ch = evt.getKeyChar();
+        if(ch < '0' || ch > '9') evt.consume();
+    }//GEN-LAST:event_txtRepeticionesKeyTyped
 
     private boolean validacionEjercicio() {
         if(txtNombre.getText().equals("")) {
@@ -192,38 +244,6 @@ public class frmCrearDia extends javax.swing.JFrame {
         txtNombre.setText("");
         txtSeries.setText("");
         txtRepeticiones.setText("");
-    }
- 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmCrearDia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmCrearDia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmCrearDia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmCrearDia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmCrearDia().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

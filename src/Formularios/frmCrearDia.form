@@ -156,7 +156,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtNombre">
       <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyPressed"/>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombreKeyTyped"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblSeries">
@@ -165,6 +165,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSeries">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSeriesKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="lblRepeticiones">
       <Properties>
@@ -172,6 +175,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtRepeticiones">
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRepeticionesKeyTyped"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnA&#xf1;adirEjercicio">
       <Properties>
@@ -185,11 +191,17 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnCrearDia">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Dia"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCrearDiaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
