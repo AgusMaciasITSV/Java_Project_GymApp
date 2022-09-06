@@ -4,15 +4,14 @@
  */
 package Formularios;
 
-/**
- *
- * @author agust
- */
-public class frmInicio_tmp extends javax.swing.JFrame {
+import Clases.Plan;
+import java.util.ArrayList;
 
-    /**
-     * Creates new form frmInicio_tmp
-     */
+
+public class frmInicio_tmp extends javax.swing.JFrame {
+    
+    private ArrayList<Plan> listaPlanes = new ArrayList();
+    
     public frmInicio_tmp() {
         initComponents();
         this.setLocationRelativeTo(null); // centra la ventana

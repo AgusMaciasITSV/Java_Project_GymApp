@@ -34,6 +34,12 @@ public class Ejercicio {
     public void setSeries(int Series) {
         this.Series = Series;
     }
+
+    @Override
+    public String toString() {
+        return "Ejercicio{" + "nombreEjercicio=" + nombreEjercicio + ", Repeticiones=" + Repeticiones + ", Series=" + Series + '}';
+    }
+    
     
     
 }
