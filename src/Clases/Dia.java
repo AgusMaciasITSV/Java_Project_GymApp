@@ -8,16 +8,6 @@ public class Dia {
     public Dia(ArrayList<Ejercicio> listaEjercicios) {
         this.listaEjercicios = listaEjercicios;
     }
-    
-    public Ejercicio getEjercicioDeLista(int indice) {
-        return listaEjercicios.get(indice);
-    }
-    public void setEjercicioALista(int indice, Ejercicio ejecicio) {
-        listaEjercicios.set(indice, ejecicio);
-    }
-    public void addEjercicioALista(Ejercicio ejercicio) {
-        listaEjercicios.add(ejercicio);
-    }
 
     public ArrayList<Ejercicio> getListaEjercicios() {
         return listaEjercicios;
