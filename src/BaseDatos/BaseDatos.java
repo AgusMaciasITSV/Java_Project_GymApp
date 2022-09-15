@@ -139,7 +139,7 @@ public class BaseDatos {
     public static ArrayList<Cliente> leerClientes() {
         ArrayList<Cliente> listaCliente = new ArrayList();
         
-        try (BufferedReader entrada = new BufferedReader(new FileReader("Cliente.txt"))){
+        try (BufferedReader entrada = new BufferedReader(new FileReader("Clientes.txt"))){
             String s, s2 = new String();
             
             String usuario, nombre, contra;
@@ -153,19 +153,19 @@ public class BaseDatos {
                 edad = Integer.parseInt(listaTxt[2]);
                 contra = listaTxt[3];
                 
-                String[] planesTxt = s.split("|");
+                String[] planesTxt = obtenerLista(listaTxt[4], "|");
                 ArrayList<Plan> listaPlanes = new ArrayList();
-                
+
                 for (int i = 0; i < planesTxt.length; i++) {
-                    String[] dias = planesTxt[i].split("/");
+                    String[] dias = obtenerLista(planesTxt[i], "/");
                     ArrayList<Dia> listaDias = new ArrayList();
                     
                     for (int j = 0; j < dias.length; j++) {
-                        String[] ejercicios = dias[j].split(";");
+                        String[] ejercicios = obtenerLista(dias[j], ";");
                         ArrayList<Ejercicio> listaEjercicios = new ArrayList();
                         
                         for (int k = 0; k < ejercicios.length; k++) {
-                            String[] caracTxt = ejercicios[k].split("_");
+                            String[] caracTxt = obtenerLista(ejercicios[k], "_");
                             
                             String nombreEjer = caracTxt[0];
                             int seriesEjer = Integer.parseInt(caracTxt[1]);
@@ -195,5 +195,16 @@ public class BaseDatos {
             System.out.println(e);
         }
         return listaCliente;
+    }
+
+    private static String[] obtenerLista(String listaTxt, String sep) {
+        String[] lista = new String[1];
+        if(listaTxt.contains(sep)) {
+            lista = listaTxt.split(sep);
+            return lista;
+        }
+        
+        lista[0] = listaTxt;
+        return lista;
     }
 }
