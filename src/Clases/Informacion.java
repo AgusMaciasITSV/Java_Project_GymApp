@@ -16,6 +16,16 @@ public class Informacion {
     public void setNombre_apellido(String nombre_apellido) {
         this.nombre_apellido = nombre_apellido;
     }
+    
+    public String getNombre() {
+        String[] nombreApellido = nombre_apellido.split("_");
+        return nombreApellido[0];
+    }
+    
+    public String getApellido() {
+        String[] nombreApellido = nombre_apellido.split("_");
+        return nombreApellido[1];
+    }
 
     public int getEdad() {
         return edad;

@@ -71,9 +71,9 @@ public class frmInicio_tmp extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(lblTitulo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addComponent(btnCargarPlan)
-                .addGap(39, 39, 39)
+                .addGap(42, 42, 42)
                 .addComponent(btnVerPlan)
                 .addGap(66, 66, 66))
         );
