@@ -1,12 +1,29 @@
 package Formularios;
 
+import Clases.Dia;
+import Clases.Ejercicio;
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 public class frmCrearPlan extends javax.swing.JFrame {
+    
+    private String nombrePlan;
+    
+    private DefaultListModel<String> modelDatosLista = new DefaultListModel<>();
+    
+    private ArrayList<Dia> listaDias = new ArrayList<>();
+    private ArrayList<Ejercicio> listaEjercicios = new ArrayList<>();
 
     public frmCrearPlan() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        int tipoJOption = JOptionPane.QUESTION_MESSAGE;
+        nombrePlan = JOptionPane.showInputDialog(this, "Elija el nombre del plan", "Elejir nombre del plan", tipoJOption);
+        
+        
+        ltEjercicios.setModel(modelDatosLista);
     }
 
     @SuppressWarnings("unchecked")
@@ -38,13 +55,13 @@ public class frmCrearPlan extends javax.swing.JFrame {
         rb4serie = new javax.swing.JRadioButton();
         btnAñadirEjercicio = new javax.swing.JButton();
         btnAñadirDia = new javax.swing.JButton();
-        lblNombrePlan = new javax.swing.JLabel();
-        txtNombrePlan = new javax.swing.JTextField();
-        txtReps = new javax.swing.JTextField();
         btnCrearPlan = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
+        txtReps = new javax.swing.JTextField();
+        btnCambiarNombrePlan = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Formulario Plan");
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -58,6 +75,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
 
         lblNombreEjercicio.setText("Nombre Ejercicio");
 
+        cbNombreEjercicios.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Sentadilla", "Flexion", "Dominadas", "Peso Muerto", "Remo", "Dominadas", "Curl" }));
         cbNombreEjercicios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cbNombreEjerciciosActionPerformed(evt);
@@ -103,6 +121,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
         lblReps.setText("Repeticiones");
 
         rbGroupReps.add(rb10reps);
+        rb10reps.setSelected(true);
         rb10reps.setText("10 Repeticiones");
 
         rbGroupReps.add(rb8reps);
@@ -139,21 +158,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
             }
         });
 
-        lblNombrePlan.setText("Nombre Plan");
-
-        txtNombrePlan.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombrePlanKeyTyped(evt);
-            }
-        });
-
-        txtReps.setEnabled(false);
-        txtReps.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtRepsKeyTyped(evt);
-            }
-        });
-
         btnCrearPlan.setText("Crear Plan");
         btnCrearPlan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -165,6 +169,20 @@ public class frmCrearPlan extends javax.swing.JFrame {
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnVolverActionPerformed(evt);
+            }
+        });
+
+        txtReps.setEnabled(false);
+        txtReps.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtRepsKeyTyped(evt);
+            }
+        });
+
+        btnCambiarNombrePlan.setText("Cambiar Nombre del Plan");
+        btnCambiarNombrePlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCambiarNombrePlanActionPerformed(evt);
             }
         });
 
@@ -188,62 +206,64 @@ public class frmCrearPlan extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnCrearPlan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnAñadirDia, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                        .addComponent(rb1serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(rb2serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(rb3serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(rbOtraSerie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                        .addComponent(rb4serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(lblSeries)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(6, 6, 6)
-                                                .addComponent(txtSeries, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblReps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(57, 57, 57))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(7, 7, 7)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(7, 7, 7)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                                .addComponent(rb1serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(rb2serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(rb3serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(rbOtraSerie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addComponent(rb4serie, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                            .addComponent(lblSeries)))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addComponent(txtSeries, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(rb10reps)
-                                                    .addComponent(rb8reps)
-                                                    .addComponent(rb12reps)
-                                                    .addComponent(rbFalloreps)
-                                                    .addComponent(rbOtraReps)
-                                                    .addComponent(txtReps, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(10, 10, 10))))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(lblNombrePlan, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNombrePlan))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lblReps, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                        .addGap(57, 57, 57))
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addGap(7, 7, 7)
+                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(rb10reps)
+                                                            .addComponent(rb8reps)
+                                                            .addComponent(rb12reps)
+                                                            .addComponent(rbFalloreps)
+                                                            .addComponent(rbOtraReps)
+                                                            .addComponent(txtReps, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGap(10, 10, 10))))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblNombreEjercicio)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(cbNombreEjercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(txtNombreEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))
-                                .addContainerGap())
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(layout.createSequentialGroup()
+                                                        .addComponent(lblNombreEjercicio)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(cbNombreEjercicios, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(txtNombreEjercicio, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(0, 0, Short.MAX_VALUE)))
+                                        .addContainerGap())
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(btnAñadirEjercicio)
+                                                .addGap(72, 72, 72))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(btnVolver)
+                                                .addContainerGap())))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnAñadirEjercicio)
-                                        .addGap(72, 72, 72))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(btnVolver)
-                                        .addContainerGap())))))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCambiarNombrePlan)
+                                .addGap(99, 99, 99))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -254,8 +274,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDias)
                     .addComponent(cbDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblNombrePlan)
-                    .addComponent(txtNombrePlan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCambiarNombrePlan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -315,20 +334,18 @@ public class frmCrearPlan extends javax.swing.JFrame {
             return;
         }
         
-        int serie, rep;
-        
         String nombreEjer = txtNombreEjercicio.getText();
+        int serie = checkRadioButtons(true); // metodos solo para ordenar el codigo
+        int rep = checkRadioButtons(false);
         
-        try {
-            serie = checkRadioButtons(true); // metodo solo para ordenar el codigo
-            rep = checkRadioButtons(false);
-            
-            System.out.println(nombreEjer);
-            System.out.println(serie);
-            System.out.println(rep);
-        } catch (Exception e) {
-            System.out.println(e.toString());
-        }
+        Ejercicio ejer = new Ejercicio(nombreEjer, serie, rep);
+        listaEjercicios.add(ejer);
+        
+        JOptionPane.showMessageDialog(null, "Ejercicio añadido exitosamente");
+        
+        
+        limpiarCampos(serie, rep);
+        actualizarListaEjercicios();
     }//GEN-LAST:event_btnAñadirEjercicioActionPerformed
 
     private void btnAñadirDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirDiaActionPerformed
@@ -340,11 +357,12 @@ public class frmCrearPlan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCrearPlanActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+       // parent.setVisible(true);
+       this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void cbNombreEjerciciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbNombreEjerciciosActionPerformed
-        // TODO add your handling code here:
+        txtNombreEjercicio.setText(String.valueOf(cbNombreEjercicios.getSelectedItem()));
     }//GEN-LAST:event_cbNombreEjerciciosActionPerformed
 
     private void cbDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiasActionPerformed
@@ -370,10 +388,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
         txtReps.setEnabled(false);
     }//GEN-LAST:event_rbOtraRepsStateChanged
 
-    private void txtNombrePlanKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombrePlanKeyTyped
-        filtrarCaracteres(true, evt);
-    }//GEN-LAST:event_txtNombrePlanKeyTyped
-
     private void txtNombreEjercicioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreEjercicioKeyTyped
         filtrarCaracteres(true, evt);
     }//GEN-LAST:event_txtNombreEjercicioKeyTyped
@@ -385,6 +399,10 @@ public class frmCrearPlan extends javax.swing.JFrame {
     private void txtRepsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRepsKeyTyped
         filtrarCaracteres(false, evt);
     }//GEN-LAST:event_txtRepsKeyTyped
+
+    private void btnCambiarNombrePlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarNombrePlanActionPerformed
+        nombrePlan = JOptionPane.showInputDialog(this, "Elija el nombre del plan", "Elejir nombre del plan", 3);
+    }//GEN-LAST:event_btnCambiarNombrePlanActionPerformed
 
     
     // FUNCIONES 
@@ -413,7 +431,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
         
         if(rbFalloreps.isSelected()) return 0; ; // cero significa al fallo
         
-        return 999; // significa fallo
+        return 9*9*9*9*9*9*9;  // para que no tire error por "missing return", en validarCampos se comprueba si hay alguno selec
     }
     
     private static void filtrarCaracteres(boolean filtrarNumeros, java.awt.event.KeyEvent evt) {
@@ -432,10 +450,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccionade/Complete el nombre de ejercicio");
             return false;
         }
-        if(rbOtraReps.isSelected() || rbOtraSerie.isSelected()) {
-            JOptionPane.showMessageDialog(null, "No puede completar los campos de series y/o repeciones con cero");
-            return false;
-        }
         if(rbOtraSerie.isSelected()) {
             if(txtSeries.getText().equals("")) {
                 JOptionPane.showMessageDialog(null, "Seleccione/Complete el campo de las series");
@@ -443,15 +457,74 @@ public class frmCrearPlan extends javax.swing.JFrame {
             }
         }
         if(rbOtraReps.isSelected()) {
-            if(rbOtraReps.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Seleccione/Complete el campo de las repeticiones");
+            if(txtReps.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Seleccione/Complete el campo de las series");
                 return false;
-            } 
+            }
         }
-        if(checkRadioButtons(true) == checkRadioButtons(false)) { // si los dos me devuelven 999 devolver true
-            JOptionPane.showMessageDialog(null, "Seleccionar algun radio button de series y/o repeticiones");
+        if(checkRadioButtons(true) == 999 || checkRadioButtons(false) == 999) { // si los dos me devuelven 999 devolver true
+            JOptionPane.showMessageDialog(null, "Seleccionar algun radio button de series o repeticiones");
         }
         return true;
+    }
+    
+    private void limpiarCampos(int serie, int rep) {
+        txtNombreEjercicio.setText("");
+        txtSeries.setText("");
+        txtReps.setText("");
+        
+        // solucion momentanea: no puedo deseleleccionar todos los radio buttons por ser parte de un gruop button
+        rb1serie.setSelected(true);
+        rb8reps.setSelected(true);
+        
+        //solucion no anda
+        /*
+        switch (serie) {
+            case 1 -> rb1serie.setSelected(false);
+            case 2 -> rb2serie.setSelected(false);
+            case 3 -> rb2serie.setSelected(false);
+            case 4 -> rb4serie.setSelected(false);
+            default -> rbOtraSerie.setSelected(false);
+        }
+        
+        switch (rep) {
+            case 8 -> rb8reps.setSelected(false);
+            case 10 -> rb10reps.setSelected(false);
+            case 12 -> rb12reps.setSelected(false);
+            case 0 -> rbFalloreps.setSelected(false);
+            default -> rbOtraReps.setSelected(false);
+        }
+        */
+    }
+    
+    private void actualizarListaEjercicios() {
+        
+        modelDatosLista.clear();
+        
+        for (Ejercicio ejer : listaEjercicios) {
+            
+            String nombreEjer = ejer.getNombreEjercicio();
+            int series = ejer.getSeries();
+            int rep = ejer.getRepeticiones();
+            
+            if(rep != 0) { // si rep es igual a cero significa que es al fallo
+                modelDatosLista.addElement(nombreEjer + ": " + series + " x " + rep);
+            } else {
+                modelDatosLista.addElement(nombreEjer + ": " + series + " x  al fallo");
+            }
+        }
+    }
+    
+    private void actualizarCbDias() {
+        if(listaDias.isEmpty()) {
+            cbDias.addItem("Dia 1");
+            return;
+        }
+        int i = 0;
+        while (i < cbDias.getItemCount()) {
+            cbDias.addItem("Dia " + (i + 1));
+            i++;
+        }
     }
     
     public static void main(String args[]) {
@@ -489,6 +562,7 @@ public class frmCrearPlan extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAñadirDia;
     private javax.swing.JButton btnAñadirEjercicio;
+    private javax.swing.JButton btnCambiarNombrePlan;
     private javax.swing.JButton btnCrearPlan;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbDias;
@@ -496,7 +570,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblDias;
     private javax.swing.JLabel lblNombreEjercicio;
-    private javax.swing.JLabel lblNombrePlan;
     private javax.swing.JLabel lblReps;
     private javax.swing.JLabel lblSeries;
     private javax.swing.JLabel lblTitulo;
@@ -514,7 +587,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
     private javax.swing.JRadioButton rbOtraReps;
     private javax.swing.JRadioButton rbOtraSerie;
     private javax.swing.JTextField txtNombreEjercicio;
-    private javax.swing.JTextField txtNombrePlan;
     private javax.swing.JTextField txtReps;
     private javax.swing.JTextField txtSeries;
     // End of variables declaration//GEN-END:variables

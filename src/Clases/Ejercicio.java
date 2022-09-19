@@ -5,7 +5,7 @@ public class Ejercicio {
     private int Repeticiones;
     private int Series;
 
-    public Ejercicio(String nombreEjercicio, int Repeticiones, int Series) {
+    public Ejercicio(String nombreEjercicio, int Series, int Repeticiones) {
         this.nombreEjercicio = nombreEjercicio;
         this.Repeticiones = Repeticiones;
         this.Series = Series;

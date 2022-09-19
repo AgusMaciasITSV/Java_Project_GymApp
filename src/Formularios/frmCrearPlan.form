@@ -8,7 +8,8 @@
     </Component>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
+    <Property name="title" type="java.lang.String" value="Formulario Plan"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -49,81 +50,85 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                      <Component id="rb1serie" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="rb2serie" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="rb3serie" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="rbOtraSerie" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="rb4serie" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Component id="lblSeries" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                              <Component id="txtSeries" min="-2" pref="105" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblReps" max="32767" attributes="0"/>
-                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="rb10reps" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rb8reps" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rb12reps" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rbFalloreps" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="rbOtraReps" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="txtReps" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="lblNombrePlan" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="txtNombrePlan" max="32767" attributes="0"/>
-                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Component id="lblNombreEjercicio" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Component id="cbNombreEjercicios" min="-2" pref="117" max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" attributes="0">
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                              <Component id="rb1serie" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="rb2serie" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="rb3serie" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="rbOtraSerie" alignment="0" max="32767" attributes="0"/>
+                                                              <Component id="rb4serie" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                                          </Group>
+                                                          <Component id="lblSeries" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                                      <Component id="txtSeries" min="-2" pref="105" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblReps" max="32767" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="rb10reps" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rb8reps" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rb12reps" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rbFalloreps" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="rbOtraReps" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="txtReps" alignment="0" min="-2" pref="105" max="-2" attributes="0"/>
+                                                      </Group>
+                                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
-                                          <Component id="txtNombreEjercicio" min="-2" pref="226" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="lblNombreEjercicio" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="cbNombreEjercicios" min="-2" pref="117" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Component id="txtNombreEjercicio" min="-2" pref="226" max="-2" attributes="0"/>
+                                              </Group>
+                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnAñadirEjercicio" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Component id="btnVolver" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnAñadirEjercicio" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="btnVolver" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                  </Group>
                               </Group>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnCambiarNombrePlan" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -140,8 +145,7 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblDias" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cbDias" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblNombrePlan" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtNombrePlan" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnCambiarNombrePlan" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -236,7 +240,15 @@
     <Component class="javax.swing.JComboBox" name="cbNombreEjercicios">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
+          <StringArray count="7">
+            <StringItem index="0" value="Sentadilla"/>
+            <StringItem index="1" value="Flexion"/>
+            <StringItem index="2" value="Dominadas"/>
+            <StringItem index="3" value="Peso Muerto"/>
+            <StringItem index="4" value="Remo"/>
+            <StringItem index="5" value="Dominadas"/>
+            <StringItem index="6" value="Curl"/>
+          </StringArray>
         </Property>
       </Properties>
       <Events>
@@ -333,6 +345,7 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="rbGroupReps"/>
         </Property>
+        <Property name="selected" type="boolean" value="true"/>
         <Property name="text" type="java.lang.String" value="10 Repeticiones"/>
       </Properties>
     </Component>
@@ -395,24 +408,6 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnA&#xf1;adirDiaActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="lblNombrePlan">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Nombre Plan"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtNombrePlan">
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNombrePlanKeyTyped"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtReps">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Events>
-        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRepsKeyTyped"/>
-      </Events>
-    </Component>
     <Component class="javax.swing.JButton" name="btnCrearPlan">
       <Properties>
         <Property name="text" type="java.lang.String" value="Crear Plan"/>
@@ -427,6 +422,22 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnVolverActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtReps">
+      <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtRepsKeyTyped"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnCambiarNombrePlan">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Cambiar Nombre del Plan"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCambiarNombrePlanActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

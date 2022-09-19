@@ -17,13 +17,14 @@ public class frmVistaPlan extends javax.swing.JFrame {
     private frmEntrenador parent;
     private DefaultListModel dmList = new DefaultListModel();
 
-    public frmVistaPlan(frmEntrenador parent) {
-        this.parent = parent;
-        
+    public frmVistaPlan(frmEntrenador parent, Cliente client) {
         initComponents();
         this.setLocationRelativeTo(null);
         
+        this.parent = parent;
         ltEjercicios.setModel(dmList);
+        
+        this.cliente = client;
         
         String nombre = cliente.getInformacion().getNombre();
         lblNombre.setText(lblNombre.getText() + nombre);
@@ -56,6 +57,7 @@ public class frmVistaPlan extends javax.swing.JFrame {
         btnAñadirPlan = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,7 +69,7 @@ public class frmVistaPlan extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("Ver Planes");
+        lblTitulo.setText("Planes del Cliente");
 
         jScrollPane1.setViewportView(ltEjercicios);
 
@@ -105,6 +107,8 @@ public class frmVistaPlan extends javax.swing.JFrame {
 
         jButton4.setText("Eliminar Plan");
 
+        jLabel1.setText("Ejercicios");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -138,7 +142,9 @@ public class frmVistaPlan extends javax.swing.JFrame {
                                         .addComponent(btnAñadirPlan, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 6, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -147,11 +153,12 @@ public class frmVistaPlan extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblNombre)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblNombre)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblApellido)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblEdad)
@@ -159,22 +166,23 @@ public class frmVistaPlan extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPlanes)
                             .addComponent(cbPlanes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblDias)
                             .addComponent(cbDias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
+                        .addGap(15, 15, 15)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(btnAñadirPlan))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton4)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 49, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnVolver)))))
+                                .addComponent(btnVolver))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -191,30 +199,44 @@ public class frmVistaPlan extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void cbDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiasActionPerformed
+        dmList.clear();
+        
         Dia dia = 
                 cliente.getListaPlanes().
                 get(cbPlanes.getSelectedIndex()).
                         getListaDias().
                         get(cbDias.getSelectedIndex());
         
-        dmList.clear();
+        if(dia.getListaEjercicios().isEmpty()) {
+            return;
+        }
         
-        for (int i = 0; i < dia.getListaEjercicios().size(); i++) {
-            Ejercicio ejercicio = dia.getListaEjercicios().get(i);
-            dmList.addElement(ejercicio.getNombreEjercicio() + ": " + ejercicio.getSeries() + " x " + ejercicio.getSeries());
+        for (Ejercicio ejer : dia.getListaEjercicios()) {
+            
+            String nombreEjer = ejer.getNombreEjercicio();
+            int series = ejer.getSeries();
+            int reps = ejer.getRepeticiones();
+            
+            if(reps == 0) {
+                dmList.addElement(nombreEjer + ": " + series + " x al fallo");
+            } else {
+                dmList.addElement(nombreEjer + ": " + series + " x " + reps);
+            }
         }
     }//GEN-LAST:event_cbDiasActionPerformed
 
     private void btnAñadirPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirPlanActionPerformed
         this.setVisible(false);
-        
+        asdsadas
     }//GEN-LAST:event_btnAñadirPlanActionPerformed
 
     private void actualizarCbPlanes() {
         cbPlanes.removeAllItems();
+        
         if(cliente.getListaPlanes().isEmpty()) {
             return;
         }
+        
         for (int i = 0; i < cliente.getListaPlanes().size(); i++) {
             cbPlanes.addItem("Plan N°" + (i+1));
         }
@@ -222,13 +244,14 @@ public class frmVistaPlan extends javax.swing.JFrame {
     
     private void actualizarCbDias() {
         cbDias.removeAllItems();
+        
         if(cliente.getListaPlanes().isEmpty()) {
             return;
         }
         
         int cantDias = 
                 cliente.getListaPlanes().
-                get( cbPlanes.getSelectedIndex()).
+                get(cbPlanes.getSelectedIndex()).
                 getListaDias().size();
         
         for (int i = 0; i < cantDias; i++) {
@@ -243,6 +266,7 @@ public class frmVistaPlan extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPlanes;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblDias;
