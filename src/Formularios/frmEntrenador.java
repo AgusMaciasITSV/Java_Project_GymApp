@@ -94,10 +94,22 @@ public class frmEntrenador extends javax.swing.JFrame {
 
         lblDia.setText("Días");
 
+        cbDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbDiasActionPerformed(evt);
+            }
+        });
+
         btAñadirDia.setText("Añadir Plan");
         btAñadirDia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAñadirDiaActionPerformed(evt);
+            }
+        });
+
+        cbPlan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbPlanActionPerformed(evt);
             }
         });
 
@@ -109,6 +121,11 @@ public class frmEntrenador extends javax.swing.JFrame {
         });
 
         btnAñadirDia.setText("Añadir Dia");
+        btnAñadirDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirDiaActionPerformed(evt);
+            }
+        });
 
         btnEliminarDia.setText("Eliminar Dia");
 
@@ -244,6 +261,21 @@ public class frmEntrenador extends javax.swing.JFrame {
         frmCrearPlan frmCrearPlan = new frmCrearPlan(this);
         frmCrearPlan.setVisible(true);
     }//GEN-LAST:event_btAñadirDiaActionPerformed
+
+    private void cbPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbPlanActionPerformed
+        actualizarCbDias();
+    }//GEN-LAST:event_cbPlanActionPerformed
+
+    private void cbDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbDiasActionPerformed
+        actualizarListaEjercicios();
+    }//GEN-LAST:event_cbDiasActionPerformed
+
+    private void btnAñadirDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirDiaActionPerformed
+        this.setVisible(false);
+        
+        frmCrearDia frmCrearDia = frmCrearDia(this);
+        frmCrearDia.setVisible(true);
+    }//GEN-LAST:event_btnAñadirDiaActionPerformed
 
     private void completarTabla() {
         String[] columnas = {"Nombre", "Apellido", "Edad"};

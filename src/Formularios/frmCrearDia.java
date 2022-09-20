@@ -1,21 +1,35 @@
-package BaseDatos;
+package Formularios;
 
 import Clases.Dia;
 import Clases.Ejercicio;
+import com.sun.source.tree.ParenthesizedTree;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class frmCrearDia extends javax.swing.JFrame {
     
-    private String nombrePlan;
+    private frmCrearPlan parentPlan;
+    private frmEntrenador parentEntrenador;
+    private boolean isParentPlan;
     
     private DefaultListModel<String> modelDatosLista = new DefaultListModel<>();
     
     private ArrayList<Ejercicio> listaEjercicios = new ArrayList<>();
-
-    public frmCrearDia() {
+    
+    public frmCrearDia(frmCrearPlan parent) {
         initComponents();
+        this.parentPlan = parent;
+        this.isParentPlan = true;
+        this.setLocationRelativeTo(null);
+              
+        ltEjercicios.setModel(modelDatosLista);
+    }
+    public frmCrearDia(frmEntrenador parent) {
+        initComponents();
+        this.isParentPlan = false;
+        this.parentEntrenador = parent;
         this.setLocationRelativeTo(null);
               
         ltEjercicios.setModel(modelDatosLista);
@@ -149,6 +163,11 @@ public class frmCrearDia extends javax.swing.JFrame {
         });
 
         btnAñadirDia.setText("Añadir Dia");
+        btnAñadirDia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAñadirDiaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -287,7 +306,10 @@ public class frmCrearDia extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAñadirEjercicioActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-       parent.setVisible(true);
+       if(isParentPlan) {
+           parentEntrenador.setVisible(true);
+       }
+        parent.setVisible(true);
        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
@@ -325,6 +347,14 @@ public class frmCrearDia extends javax.swing.JFrame {
     private void txtRepsKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRepsKeyTyped
         filtrarCaracteres(false, evt);
     }//GEN-LAST:event_txtRepsKeyTyped
+
+    private void btnAñadirDiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAñadirDiaActionPerformed
+        parent.añadirDia(new Dia(listaEjercicios));
+        JOptionPane.showMessageDialog(null, "Se agrego dia correctamente");
+        
+        parent.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAñadirDiaActionPerformed
 
     
     // FUNCIONES 
@@ -435,50 +465,6 @@ public class frmCrearDia extends javax.swing.JFrame {
                 modelDatosLista.addElement(nombreEjer + ": " + series + " x  al fallo");
             }
         }
-    }
-    
-    private void actualizarCbDias() {
-        if(listaDias.isEmpty()) {
-            cbDias.addItem("Dia 1");
-            return;
-        }
-        int i = 0;
-        while (i < cbDias.getItemCount()) {
-            cbDias.addItem("Dia " + (i + 1));
-            i++;
-        }
-    }
-    
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmInicio_tmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmInicio_tmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmInicio_tmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmInicio_tmp.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmCrearDia().setVisible(true);
-            }
-        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

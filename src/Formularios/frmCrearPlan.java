@@ -133,7 +133,6 @@ public class frmCrearPlan extends javax.swing.JFrame {
     public void añadirDia(Dia dia) {
         listaDias.add(dia);
         DmList.addElement("dia " + listaDias.size());
-        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

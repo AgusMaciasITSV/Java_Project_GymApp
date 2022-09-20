@@ -367,6 +367,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="A&#xf1;adir Dia"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnA&#xf1;adirDiaActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
